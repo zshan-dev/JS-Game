@@ -1,0 +1,25 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+}
+#form{
+    padding: 10px;
+    background-color:#F2EFE7;
+    border-radius: 10px;
+    max-width: 50%;
+    margin:auto;
+}
+
+input{
+    margin-top: 10px;
+}
+
+#submit_btn{
+    padding: 10px 15px;
+    font-size: 15px;
+}
+
+#name_warning{
+    display: none;
+}

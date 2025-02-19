@@ -1,7 +1,8 @@
 <!doctype html>
 <!--
-TODO: This is a comment. Change this header comment to describe the 
-web page and include your name as author.
+Name: Zeshan Bombaywala 
+Student Number: 
+Description: Main page which displays the menu screen
 -->
 <html>
 
@@ -13,23 +14,24 @@ web page and include your name as author.
     <script src ="js/menu.js"></script>
 </head>
 <body>
-    <div>
+    <div id = "container">
+        <div id="header">
+            <h1> GAME NAME </h1>
+        </div>
         <div id="form">
-            <h1> Login </h1>
+            <h1> Menu </h1>
             <h3> Name</h3>
             <input id = "name" type = "text" placeholder = "Ex. Zeeshan">
-            <p id = "name_warning">Enter info</p>
             <h3> Age</h3>
-            <input id = "age" type = "text" placeholder = "Ex. 18">
+            <input id = "age" type = "number" min = "1" placeholder="18">
             <h3> Favourite Color</h3>
-            <input id = "color" type = "text" placeholder = "Ex. Blue">
-            <p id = "warning"></p>
+            <input id = "color" type = "color" value = "#ffffff">
+            <p id = "warning"> Invalid Inputs for name or age</p>
             <input id = "submit_btn" type = "button" value = "submit">
         </div>
-        <div id="header"> TODO </div>
-        <div id="nav"> TODO </div>
-        <div id="content"> TODO </div>
-        <div id="footer"> TODO </div>
+        <div id="board">
+            <h2>Score</h2>
+        </div>
     </div>
 </body>
 

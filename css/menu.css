@@ -1,7 +1,24 @@
+/*
+Name: Zeshan Bombaywala 
+Student Number: 
+Description:
+*/
+
 *{
     margin:0;
     padding:0;
     box-sizing: border-box;
+}
+
+#container{
+    background-image: url("/images/bg1.jpg");
+    background-size: cover;
+}
+
+#header{
+    text-align: center;
+    padding: 15px;
+    margin-bottom: 5px;
 }
 #form{
     padding: 10px;
@@ -12,7 +29,14 @@
 }
 
 input{
-    margin-top: 10px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    font-size: 15px;
+    padding:3px;
+}
+
+input[type=color] {
+    height: 40px;
 }
 
 #submit_btn{
@@ -22,4 +46,11 @@ input{
 
 #name_warning{
     display: none;
+}
+
+#board{
+    width:540px;
+    height: 540px;
+    margin: 0 auto;
+    visibility: hidden;
 }

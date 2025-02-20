@@ -49,19 +49,32 @@ input[type=color] {
     display: none;
 }
 
-#score{
-    text-align: center;
-}
-
 #board{
     width:540px;
     height: 540px;
     margin: 0 auto;
     display: none;
+    border-radius: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+#board div{
+    margin:3px;
+    background-color: aliceblue;
+    width: 150px;
+    height:150px;
+}
+
+#score{
+    margin: 5px;
+    justify-content: center;
+    display: none;
 }
 #info{
     display: none;
 }
+
 #rules{
     display: none;
     background-color: #ec6599;

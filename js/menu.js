@@ -12,10 +12,11 @@ window.addEventListener("load", function(event){
     let color = document.getElementById("color");
     let btn_warn = document.getElementById("warning");
     let form = document.getElementById("form");
-    let game_board = document.getElementById("board");
+    let board = document.getElementById("board");
     let info = document.getElementById("info");
     let help = document.getElementById("help");
     let rules = document.getElementById("rules");
+    let score = document.getElementById("score");
 
     let open = false; // help drop down menu
 
@@ -34,6 +35,7 @@ window.addEventListener("load", function(event){
     });
     submit.disabled = true;
     checkform();
+    setGame();
 
     /**
      * Menu Form
@@ -69,12 +71,12 @@ window.addEventListener("load", function(event){
 
     submit.addEventListener("click", function(){
         form.style.display = "none";
-        game_board.style.display = "block"
+        board.style.display = "flex"
         info.style.display = "block"
+        score.style.display = "flex"
     });
 
     let fav_color = document.getElementById("color");
-    let board = document.getElementById("board");
     board.style.border = `10px solid ${fav_color.value}`;
     
     fav_color.addEventListener("input", function () {
@@ -90,4 +92,19 @@ window.addEventListener("load", function(event){
           open = true;
         }
       })
+
+
+    /**
+     * Game Setup
+     * @param {setGame} Event
+     * @returns Creates a grid of divs for the cards
+     */
+    function setGame(event){
+        for (let i=0;i<9; i++){
+            let tile = document.createElement("div");
+            tile.id = i.toString();
+            board.append(tile);
+
+        }
+      }
 });

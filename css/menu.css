@@ -10,9 +10,9 @@ Description:
     box-sizing: border-box;
 }
 
-#container{
+html{
     background-image: url("/images/bg1.jpg");
-    background-size: cover;
+    background-size:cover;
 }
 
 #header{
@@ -20,6 +20,7 @@ Description:
     padding: 15px;
     margin-bottom: 5px;
 }
+
 #form{
     padding: 10px;
     background-color:#F2EFE7;
@@ -48,9 +49,41 @@ input[type=color] {
     display: none;
 }
 
+#score{
+    text-align: center;
+}
+
 #board{
     width:540px;
     height: 540px;
     margin: 0 auto;
-    visibility: hidden;
+    display: none;
+}
+#info{
+    display: none;
+}
+#rules{
+    display: none;
+    background-color: #ec6599;
+    justify-self: center;
+    font-size: large;
+    padding: 20px;
+    width: 500px;
+    height:150px;
+    color: white;
+    border-radius: 5px;
+    border: solid 5px rgb(0, 0, 0);
+}
+
+#help{
+    display: flex;
+    justify-self: center;
+    font-size: larger;
+    background-color: #e65f93;
+    border-radius: 8px;
+    border-style: none;
+    color: #FFFFFF;
+    padding:10px;
+    text-align: center;
+    border:solid 5px red;
 }

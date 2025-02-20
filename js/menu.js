@@ -13,6 +13,11 @@ window.addEventListener("load", function(event){
     let btn_warn = document.getElementById("warning");
     let form = document.getElementById("form");
     let game_board = document.getElementById("board");
+    let info = document.getElementById("info");
+    let help = document.getElementById("help");
+    let rules = document.getElementById("rules");
+
+    let open = false; // help drop down menu
 
     btn_warn.style.visibility = "hidden";
     name.addEventListener("focus", function(event){
@@ -64,7 +69,8 @@ window.addEventListener("load", function(event){
 
     submit.addEventListener("click", function(){
         form.style.display = "none";
-        game_board.style.visibility = "visible"
+        game_board.style.display = "block"
+        info.style.display = "block"
     });
 
     let fav_color = document.getElementById("color");
@@ -74,6 +80,14 @@ window.addEventListener("load", function(event){
     fav_color.addEventListener("input", function () {
         board.style.borderColor = fav_color.value;
     });
-    
 
+    help.addEventListener("click", function(event) {
+        if (open) {
+          rules.style.display = "none";
+          open = false;
+        } else {
+          rules.style.display = "flex";
+          open = true;
+        }
+      })
 });

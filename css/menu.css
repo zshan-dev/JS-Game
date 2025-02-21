@@ -5,13 +5,14 @@ Description:
 */
 
 *{
-    margin:0;
+    margin:0px;
     padding:0;
     box-sizing: border-box;
+    font-family: 'Luckiest Guy', cursive;
 }
 
 html{
-    background-image: url("/images/bg1.jpg");
+    background-color: #131515;
     background-size:cover;
 }
 
@@ -19,19 +20,21 @@ html{
     text-align: center;
     padding: 15px;
     margin-bottom: 5px;
+    color: white;
 }
 
 #form{
-    padding: 10px;
-    background-color:#F2EFE7;
+    padding: 15px;
+    background-color:#339989;
     border-radius: 10px;
     max-width: 50%;
     margin:auto;
+    color: white;
 }
 
 input{
-    margin-top: 5px;
-    margin-bottom: 10px;
+    margin-top: 10px;
+    margin-bottom: 15px;
     font-size: 15px;
     padding:3px;
 }
@@ -49,54 +52,104 @@ input[type=color] {
     display: none;
 }
 
-#board{
-    width:540px;
-    height: 540px;
-    margin: 0 auto;
-    display: none;
-    border-radius: 10px;
-    flex-wrap: wrap;
-    justify-content: center;
-}
-
-#board div{
-    margin:3px;
-    background-color: aliceblue;
-    width: 150px;
-    height:150px;
-}
-
 #score{
     margin: 5px;
     justify-content: center;
     display: none;
-}
-#info{
-    display: none;
+    color: white;
 }
 
-#rules{
+#board{
+    width:500px;
+    margin: 0 auto;
     display: none;
-    background-color: #ec6599;
-    justify-self: center;
-    font-size: large;
-    padding: 20px;
-    width: 500px;
-    height:150px;
+    border-radius: 10px;
+    justify-content: space-around;
+}
+
+#board img{
+    width: 120px;
+    height: 120px;
+    border: solid 4px #339989;
+}
+
+#choices{
+    display: flex;
+    overflow: hidden;
+}
+
+.choice {
+    display: inline-block;
+    margin: 10px;
+    text-align: center;
+}
+
+#choices button {
+    background-color: #7de2d1;
+    font-size: 20px;
+    padding: 10px 20px;
+}
+
+#board button:hover{
+    transform: translateY(-3px);
+    background-color: #fffafb; 
+}
+
+#result{
+    display: none;
+    justify-content: center;
+    background-color: green;
+    margin: 15px;
     color: white;
-    border-radius: 5px;
-    border: solid 5px rgb(0, 0, 0);
+    border: solid #fffafb;
+    padding: 20px;
 }
 
 #help{
     display: flex;
     justify-self: center;
     font-size: larger;
-    background-color: #e65f93;
+    background-color: #000000;
     border-radius: 8px;
     border-style: none;
     color: #FFFFFF;
     padding:10px;
     text-align: center;
-    border:solid 5px red;
+    border:solid 5px #fffafb;
+    transition: all 0.3s;
+    width:100px;
+}
+
+#info{
+    display: none;
+    margin-top: 20px;
+}
+
+#help:hover{
+    transform: translateY(-3px);
+    background-color: #cc2727; 
+}
+
+#rules{
+    display: none;
+    background-color: #339989;
+    justify-self: center;
+    font-size: large;
+    padding: 20px;
+    width: 80%;
+    color: white;
+    border-radius: 10px;
+    border: solid 5px rgb(255, 255, 255);
+    padding:40px;
+    margin-top: 20px;
+}
+
+#rules h3{
+    color:purple;
+    margin-bottom: 10px; 
+    text-decoration: underline; 
+}
+
+#rules ul {
+    padding-left: 40px; 
 }

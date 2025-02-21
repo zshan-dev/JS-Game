@@ -35,7 +35,7 @@ window.addEventListener("load", function(event){
     });
     submit.disabled = true;
     checkform();
-    setGame();
+
 
     /**
      * Menu Form
@@ -69,7 +69,8 @@ window.addEventListener("load", function(event){
         });
     }
 
-    submit.addEventListener("click", function(){
+
+    submit.addEventListener("click", function(event){
         form.style.display = "none";
         board.style.display = "flex"
         info.style.display = "block"
@@ -79,9 +80,54 @@ window.addEventListener("load", function(event){
     let fav_color = document.getElementById("color");
     board.style.border = `10px solid ${fav_color.value}`;
     
-    fav_color.addEventListener("input", function () {
+    fav_color.addEventListener("input", function (event) {
         board.style.borderColor = fav_color.value;
     });
+
+    // Game Logic
+
+    let x = score;
+
+    document.getElementById('rock').addEventListener('click', function(event) {
+        playRound('rock');
+    });
+    
+    document.getElementById('paper').addEventListener('click', function(event) {
+        playRound('paper');
+    });
+    
+    document.getElementById('scissors').addEventListener('click', function(event) {
+        playRound('scissors');
+    });
+    
+    function playRound(playerChoice) {
+        let computerChoice = getComputerChoice();
+        let result = Winner(playerChoice, computerChoice);
+        displayResult(result);
+    }
+    
+    function getComputerChoice() {
+        let choices = ['rock', 'paper', 'scissors'];
+        let randomChoice = Math.floor(Math.random() * choices.length);
+        return choices[randomChoice];
+    }
+    
+    function Winner(player, computer) {
+        if (player === computer) {
+            return `It's a tie! Both chose ${player}.`;
+        } else if ((player === 'rock' && computer === 'scissors') ||
+                   (player === 'paper' && computer === 'rock') ||
+                   (player === 'scissors' && computer === 'paper')) {
+            return `You win! ${player} beats ${computer}.`;
+        } else {
+            return `You lose! ${computer} beats ${player}.`;
+        }
+    }
+    
+    function displayResult(result) {
+        document.getElementById("result").style.display = "flex"
+        document.getElementById('result').textContent = result;
+    }
 
     help.addEventListener("click", function(event) {
         if (open) {
@@ -92,19 +138,4 @@ window.addEventListener("load", function(event){
           open = true;
         }
       })
-
-
-    /**
-     * Game Setup
-     * @param {setGame} Event
-     * @returns Creates a grid of divs for the cards
-     */
-    function setGame(event){
-        for (let i=0;i<9; i++){
-            let tile = document.createElement("div");
-            tile.id = i.toString();
-            board.append(tile);
-
-        }
-      }
 });

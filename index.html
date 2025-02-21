@@ -12,35 +12,55 @@ Description: Main page which displays the menu screen
     <title>JS Game: Match Cards</title>
     <link rel="stylesheet" href = "css/menu.css">
     <script src ="js/menu.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap" rel="stylesheet">
 </head>
 <body>
     <div id = "container">
         <div id="header">
-            <h1> MATCH CARDS </h1>
+            <h1> ROCK PAPPER SCISSORS </h1>
         </div>
         <div id="form">
             <h1> Menu </h1>
             <h3> Name</h3>
             <input id = "name" type = "text" placeholder = "Ex. Zeeshan">
             <h3> Age</h3>
-            <input id = "age" type = "number" min = "1" placeholder="18">
+            <input id = "age" type = "number" min = "1" placeholder="Ex.18">
             <h3> Favourite Color</h3>
             <input id = "color" type = "color" value = "#ffffff">
             <p id = "warning"> Invalid inputs. Name or Age missing info</p>
             <input id = "submit_btn" type = "button" value = "submit">
         </div>
         <h2 id= "score">0</h2>
-        <div id="board"></div>
+        <div id="board">
+            <div id="choices">
+                <div class="choice">
+                    <img src="images/rock.jpg" alt="Rock">
+                    <button id="rock">Rock</button>
+                </div>
+                <div class="choice">
+                    <img src="images/paper.jpg" alt="Paper">
+                    <button id="paper">Paper</button>
+                </div>
+                <div class="choice">
+                    <img src="images/scissors.png" alt="Scissors">
+                    <button id="scissors">Scissors</button>
+                </div>
+            </div>    
+        </div>
+        <div id="computerChoice">
+            <img id = "CC" src="">
+            <h2 id="result"></h2>
+        </div>        
         <div id="info">
             <input id = "help" type = "button" value="HELP">
             <div id="rules">
+                <h3>Rules: </h3>
                 <ul>
-                    <li><strong>Be Respectful:</strong> Treat others with kindness and fairness.</li>
-                    <li><strong>No Cheating:</strong> Play fair; no exploits or hacks.</li>
-                    <li><strong>Stay on Topic:</strong> Keep discussions and actions relevant.</li>
-                    <li><strong>Follow Instructions:</strong> Respect game mechanics and rules.</li>
-                    <li><strong>Have Fun!</strong> Enjoy the experience and keep it positive.</li>
-                </ul>        
+                    <li> Rock crushes Scissors. </li>
+                    <li> Scissors cuts Paper. </li>
+                    <li> Paper covers Rock. </li>
+                    <li> If both players choose the same item, the game is a tie. </li>
+                </ul>
             </div>
         </div>
     </div>

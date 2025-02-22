@@ -6,7 +6,7 @@ Description:
 
 *{
     margin:0px;
-    padding:0;
+    padding-top:0;
     box-sizing: border-box;
     font-family: 'Luckiest Guy', cursive;
 }
@@ -19,6 +19,7 @@ html{
 #header{
     text-align: center;
     padding: 15px;
+    margin-top: 30px;
     margin-bottom: 5px;
     color: white;
 }
@@ -30,6 +31,7 @@ html{
     max-width: 50%;
     margin:auto;
     color: white;
+    border:solid 5px #7de2d1;
 }
 
 input{
@@ -60,11 +62,12 @@ input[type=color] {
 }
 
 #board{
-    width:500px;
+    width:490px;
     margin: 0 auto;
     display: none;
     border-radius: 10px;
     justify-content: space-around;
+    margin-bottom: 15px;
 }
 
 #board img{
@@ -87,18 +90,28 @@ input[type=color] {
 #choices button {
     background-color: #7de2d1;
     font-size: 20px;
-    padding: 10px 20px;
+    padding: 10px;
+    margin:5px;
+    border: solid #339989;
+    transition: all 0.3s;
+    box-shadow:0px 2px 10px #339989;
+
 }
 
 #board button:hover{
     transform: translateY(-3px);
-    background-color: #fffafb; 
+    background-color: #339989; 
+}
+
+#computerChoice{
+    display: none;
+    /* background-color: #cc2727; */
+    max-width: 75%;
+    margin: auto;
 }
 
 #result{
-    display: none;
     justify-content: center;
-    background-color: green;
     margin: 15px;
     color: white;
     border: solid #fffafb;
@@ -134,6 +147,7 @@ input[type=color] {
     display: none;
     background-color: #339989;
     justify-self: center;
+    flex-direction: column;
     font-size: large;
     padding: 20px;
     width: 80%;

@@ -17,8 +17,12 @@ window.addEventListener("load", function(event){
     let help = document.getElementById("help");
     let rules = document.getElementById("rules");
     let score = document.getElementById("score");
+    let comp = document.getElementById("computerChoice");
+    let WLC = document.getElementById('result');
+    let compIMG = document.getElementById("CC");
 
-    let open = false; // help drop down menu
+
+    let open = false; // HELP drop down menu
 
     btn_warn.style.visibility = "hidden";
     name.addEventListener("focus", function(event){
@@ -85,17 +89,12 @@ window.addEventListener("load", function(event){
     });
 
     // Game Logic
-
-    let x = score;
-
     document.getElementById('rock').addEventListener('click', function(event) {
         playRound('rock');
     });
-    
     document.getElementById('paper').addEventListener('click', function(event) {
         playRound('paper');
     });
-    
     document.getElementById('scissors').addEventListener('click', function(event) {
         playRound('scissors');
     });
@@ -108,25 +107,35 @@ window.addEventListener("load", function(event){
     
     function getComputerChoice() {
         let choices = ['rock', 'paper', 'scissors'];
-        let randomChoice = Math.floor(Math.random() * choices.length);
+        let randomChoice = Math.floor(Math.random() * choices.length); //0,1,2
         return choices[randomChoice];
     }
-    
+
+    let points = 0;
     function Winner(player, computer) {
         if (player === computer) {
-            return `It's a tie! Both chose ${player}.`;
-        } else if ((player === 'rock' && computer === 'scissors') ||
-                   (player === 'paper' && computer === 'rock') ||
-                   (player === 'scissors' && computer === 'paper')) {
-            return `You win! ${player} beats ${computer}.`;
+            let my_age = parseInt(age.value);
+            points += my_age;
+            score.innerText = points.toString();
+            WLC.style["background-color"] = "darkblue";
+            return `It's a tie! Both chose ${player}. But you get ${age.value} extra points because of your age!`;
+        } else if ((player === 'rock' && computer === 'scissors') || (player === 'paper' && computer === 'rock') || (player === 'scissors' && computer === 'paper')) {
+            points += 10;
+            score.innerText = points.toString();
+            WLC.style["background-color"] = "green";
+            // compIMG.src = "/images/bg1.jpg"
+            return `The computer chopse ${computer}. ${name.value} you win! ${player} beats ${computer}.`;
         } else {
-            return `You lose! ${computer} beats ${player}.`;
+            points -= 5;
+            score.innerText = points.toString();
+            WLC.style["background-color"] = "orange";
+            return `The computer choose ${computer}. ${name.value} you lose! ${computer} beats ${player}.`;
         }
     }
     
     function displayResult(result) {
-        document.getElementById("result").style.display = "flex"
-        document.getElementById('result').textContent = result;
+        comp.style.display = "block";
+        WLC.textContent = result;
     }
 
     help.addEventListener("click", function(event) {

@@ -24,6 +24,7 @@ window.addEventListener("load", function(event){
 
     let open = false; // HELP drop down menu
 
+    // Menu Form
     btn_warn.style.visibility = "hidden";
     name.addEventListener("focus", function(event){
         this.style["background-color"] = "lightgrey"
@@ -73,12 +74,11 @@ window.addEventListener("load", function(event){
         });
     }
 
-
     submit.addEventListener("click", function(event){
         form.style.display = "none";
-        board.style.display = "flex"
-        info.style.display = "block"
-        score.style.display = "flex"
+        board.style.display = "flex";
+        info.style.display = "block";
+        score.style.display = "flex";
     });
 
     let fav_color = document.getElementById("color");
@@ -98,6 +98,13 @@ window.addEventListener("load", function(event){
     document.getElementById('scissors').addEventListener('click', function(event) {
         playRound('scissors');
     });
+
+    /**
+     * Game
+     * @param {playRound} playerChoice
+     * @returns The result of who won
+     */
+
     
     function playRound(playerChoice) {
         let computerChoice = getComputerChoice();
@@ -105,11 +112,30 @@ window.addEventListener("load", function(event){
         displayResult(result);
     }
     
+    /**
+     * Game
+     * @param {getComputerChoice} 
+     * @returns Randomly chooses between rock, paper or scissors. 
+     */
+
     function getComputerChoice() {
         let choices = ['rock', 'paper', 'scissors'];
         let randomChoice = Math.floor(Math.random() * choices.length); //0,1,2
+        if (randomChoice == 0){
+            compIMG.src = "images/rock.jpg";
+        } else if(randomChoice == 1){
+            compIMG.src = "images/paper.jpg";
+        } else{
+            compIMG.src = "images/scissors.png";
+        }
         return choices[randomChoice];
     }
+
+    /**
+     * Game
+     * @param {Winner}
+     * @returns Determines the Winner of the game
+     */
 
     let points = 0;
     function Winner(player, computer) {
@@ -118,21 +144,26 @@ window.addEventListener("load", function(event){
             points += my_age;
             score.innerText = points.toString();
             WLC.style["background-color"] = "darkblue";
-            return `It's a tie! Both chose ${player}. But you get ${age.value} extra points because of your age!`;
+            return `It's a tie! Both choose ${player}. But you get ${age.value} extra points because of your age!`;
         } else if ((player === 'rock' && computer === 'scissors') || (player === 'paper' && computer === 'rock') || (player === 'scissors' && computer === 'paper')) {
             points += 10;
             score.innerText = points.toString();
             WLC.style["background-color"] = "green";
-            // compIMG.src = "/images/bg1.jpg"
-            return `The computer chopse ${computer}. ${name.value} you win! ${player} beats ${computer}.`;
+            return `${name.value} you win! ${player} beats ${computer}.`;
         } else {
             points -= 5;
             score.innerText = points.toString();
             WLC.style["background-color"] = "orange";
-            return `The computer choose ${computer}. ${name.value} you lose! ${computer} beats ${player}.`;
+            return `${name.value} you lost. ${computer} beats ${player}.`;
         }
     }
-    
+
+    /**
+     * Game
+     * @param {displayResult} result
+     * @returns Displays the outcome of the game.
+     */
+
     function displayResult(result) {
         comp.style.display = "block";
         WLC.textContent = result;

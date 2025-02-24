@@ -32,6 +32,7 @@ html{
     margin:auto;
     color: white;
     border:solid 5px #7de2d1;
+    box-shadow: 0px 3px 30px #7de2d1;
 }
 
 input{
@@ -54,8 +55,18 @@ input[type=color] {
     display: none;
 }
 
+#challange{
+    display: none;
+    color: yellow;
+    justify-content: center;
+    margin:10px;
+    padding: 10px;
+    border: solid yellow;
+    box-shadow: 0px 5px 15px yellowgreen;
+}
+
 #score{
-    margin: 5px;
+    margin: 20px;
     justify-content: center;
     display: none;
     color: white;
@@ -68,6 +79,7 @@ input[type=color] {
     border-radius: 10px;
     justify-content: space-around;
     margin-bottom: 15px;
+    box-shadow: 0px 3px 30px #ffffff;
 }
 
 #board img{
@@ -131,6 +143,34 @@ input[type=color] {
     color: white;
     border: solid #fffafb;
     padding: 20px;
+}
+
+#end{
+    display: none;
+    justify-content: center;
+    flex-direction: column;
+    color: white;
+    font-size: large;
+    background-color: #339989;
+    width: 50%;
+    margin: auto;
+    margin-top: 20px;
+    padding:10px;
+}
+
+#end button{
+    background-color: #7de2d1;
+    font-size: 20px;
+    padding: 10px;
+    margin:5px;
+    border: solid #ffffff;
+    transition: all 0.3s;
+    box-shadow:0px 2px 10px #339989;
+}
+
+#end button:hover{
+    transform: translateY(-3px);
+    background-color: #ffffff; 
 }
 
 #help{

@@ -9,7 +9,6 @@ window.addEventListener("load", function(event){
     let submit = document.getElementById("submit_btn");
     let name = document.getElementById("name");
     let age = document.getElementById("age");
-    let color = document.getElementById("color");
     let btn_warn = document.getElementById("warning");
     let form = document.getElementById("form");
     let board = document.getElementById("board");
@@ -20,6 +19,14 @@ window.addEventListener("load", function(event){
     let comp = document.getElementById("computerChoice");
     let WLC = document.getElementById('result');
     let compIMG = document.getElementById("CC");
+    let chall = document.getElementById("challange");
+    let rock = document.getElementById("rock");
+    let paper = document.getElementById("paper");
+    let scissors = document.getElementById("scissors");
+    let end_screen = document.getElementById("end");
+    let end_msg = document.getElementById("end_msg");
+    let exit = document.getElementById("exit");
+    let restart = document.getElementById("restart");
 
 
     let open = false; // HELP drop down menu
@@ -27,20 +34,19 @@ window.addEventListener("load", function(event){
     // Menu Form
     btn_warn.style.visibility = "hidden";
     name.addEventListener("focus", function(event){
-        this.style["background-color"] = "lightgrey"
+        this.style["background-color"] = "lightgrey";
     });
     name.addEventListener("blur", function(event){
         this.style["background-color"] = "";
     });
     age.addEventListener("focus", function(event){
-        this.style["background-color"] = "lightgrey"
+        this.style["background-color"] = "lightgrey";
     });
     age.addEventListener("blur", function(event){
         this.style["background-color"] = "";
     });
     submit.disabled = true;
     checkform();
-
 
     /**
      * Menu Form
@@ -79,6 +85,7 @@ window.addEventListener("load", function(event){
         board.style.display = "flex";
         info.style.display = "block";
         score.style.display = "flex";
+        chall.style.display = "flex";
     });
 
     let fav_color = document.getElementById("color");
@@ -89,23 +96,26 @@ window.addEventListener("load", function(event){
     });
 
     // Game Logic
-    document.getElementById('rock').addEventListener('click', function(event) {
-        playRound('rock');
+    let attempts = 0;
+    rock.addEventListener("click", function(event) {
+        attempts +=1;
+        playRound("rock");
     });
-    document.getElementById('paper').addEventListener('click', function(event) {
-        playRound('paper');
+    paper.addEventListener("click", function(event) {
+        attempts +=1;
+        playRound("paper");
     });
-    document.getElementById('scissors').addEventListener('click', function(event) {
-        playRound('scissors');
+    scissors.addEventListener("click", function(event) {
+        attempts +=1;
+        playRound("scissors");
     });
 
     /**
-     * Game
-     * @param {playRound} playerChoice
-     * @returns The result of who won
+     * Processes a round of the game with the given player choice.
+     * @param {string} playerChoice - The player's choice ("rock", "paper", or "scissors").
+     * @returns
      */
 
-    
     function playRound(playerChoice) {
         let computerChoice = getComputerChoice();
         let result = Winner(playerChoice, computerChoice);
@@ -119,12 +129,12 @@ window.addEventListener("load", function(event){
      */
 
     function getComputerChoice() {
-        let choices = ['rock', 'paper', 'scissors'];
-        let randomChoice = Math.floor(Math.random() * choices.length); //0,1,2
+        let choices = ["rock", "paper", "scissors"];
+        let randomChoice = Math.floor(Math.random() * choices.length);
         if (randomChoice == 0){
-            compIMG.src = "images/rock.jpg";
+            compIMG.src = "images/rock.png";
         } else if(randomChoice == 1){
-            compIMG.src = "images/paper.jpg";
+            compIMG.src = "images/paper.png";
         } else{
             compIMG.src = "images/scissors.png";
         }
@@ -132,9 +142,10 @@ window.addEventListener("load", function(event){
     }
 
     /**
-     * Game
-     * @param {Winner}
-     * @returns Determines the Winner of the game
+     * Determines the winner of the game round, updates points, and checks if the game should end.
+     * @param {string} player - The player's choice.
+     * @param {string} computer - The computer's choice.
+     * @returns {string} Message indicating the result of the round.
      */
 
     let points = 0;
@@ -144,30 +155,61 @@ window.addEventListener("load", function(event){
             points += my_age;
             score.innerText = points.toString();
             WLC.style["background-color"] = "darkblue";
+            end_game();
             return `It's a tie! Both choose ${player}. But you get ${age.value} extra points because of your age!`;
         } else if ((player === 'rock' && computer === 'scissors') || (player === 'paper' && computer === 'rock') || (player === 'scissors' && computer === 'paper')) {
             points += 10;
             score.innerText = points.toString();
             WLC.style["background-color"] = "green";
+            end_game();
             return `${name.value} you win! ${player} beats ${computer}.`;
         } else {
             points -= 5;
             score.innerText = points.toString();
             WLC.style["background-color"] = "orange";
+            end_game();
             return `${name.value} you lost. ${computer} beats ${player}.`;
         }
     }
 
     /**
-     * Game
-     * @param {displayResult} result
-     * @returns Displays the outcome of the game.
+     * Checks if the player has reached the required points to end the game and displays the end game screen.
      */
+    function end_game(){
+        if(points >= 50){
+            board.style.display = "none";
+            comp.style.display = "none";
+            end_screen.style.display = "flex";
+            score.style.display = "none";
+            chall.style.display = "none"
+            end_msg.innerHTML = `Game Over: It took you ${attempts} tries to reach 50 points.`;
+        }
+    }
 
+    /**
+     * Displays the result of the current game round.
+     * @param {string} result - The result message to display.
+     */
+    
     function displayResult(result) {
         comp.style.display = "block";
         WLC.textContent = result;
+        end_game();
     }
+
+    exit.addEventListener("click", function(event) {
+        document.location.reload();
+    });
+
+    restart.addEventListener("click", function(event) {
+        points = 0;
+        attempts = 0;
+        score.innerText = '0';
+        end_screen.style.display = "none";
+        board.style.display = "flex";
+        comp.style.display = "none";
+        WLC.style.backgroundColor = "";
+    });
 
     help.addEventListener("click", function(event) {
         if (open) {

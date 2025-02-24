@@ -30,15 +30,21 @@ Description: Main page which displays the menu screen
             <p id = "warning"> Invalid inputs. Name or Age missing info</p>
             <input id = "submit_btn" type = "button" value = "submit">
         </div>
+        <h2 id ="challange"> GOAL: Get to 50 points in the least amount of rounds!</h2>
+        <div id = "end">
+            <h2 id ="end_msg"></h2>
+            <button id="exit">EXIT</button>
+            <button id="restart">RESTART</button>
+        </div>
         <h2 id= "score">0</h2>
         <div id="board">
             <div id="choices">
                 <div class="choice">
-                    <img src="images/rock.jpg" alt="Rock">
+                    <img src="images/rock.png" alt="Rock">
                     <button id="rock">Rock</button>
                 </div>
                 <div class="choice">
-                    <img src="images/paper.jpg" alt="Paper">
+                    <img src="images/paper.png" alt="Paper">
                     <button id="paper">Paper</button>
                 </div>
                 <div class="choice">
@@ -51,12 +57,13 @@ Description: Main page which displays the menu screen
             <h1>The Computer Choose: </h1>
             <img id ="CC" src="">
             <h2 id="result"></h2>
-        </div>        
+        </div>       
         <div id="info">
             <input id = "help" type = "button" value="HELP">
             <div id="rules">
                 <h3>Rules: </h3>
                 <ul>
+                    <li> Get to 50 points in the least amount of tries.</li><br>
                     <li> Rock crushes Scissors. </li>
                     <li> Scissors cuts Paper. </li>
                     <li> Paper covers Rock. </li>

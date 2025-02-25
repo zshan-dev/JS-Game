@@ -224,3 +224,30 @@ input[type=color] {
     padding-left: 40px; 
 }
 
+
+@media (max-width: 430px) {
+    
+    input {
+        width: 60%; 
+        padding: 8px; 
+    }
+
+    #board {
+        width: 90%; 
+    }
+
+    #choices {
+        flex-direction: column;
+        justify-content: left;
+    }
+
+    #choices button {
+        font-size:medium;
+        width:90px;
+        margin:0px;
+    }
+
+    #board img {
+        display: none;
+    }
+}

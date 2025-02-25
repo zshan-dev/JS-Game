@@ -209,6 +209,8 @@ window.addEventListener("load", function(event){
         board.style.display = "flex";
         comp.style.display = "none";
         WLC.style.backgroundColor = "";
+        chall.style.display = "flex";
+        score.style.display = "flex";
     });
 
     help.addEventListener("click", function(event) {
@@ -221,3 +223,4 @@ window.addEventListener("load", function(event){
         }
       })
 });
+

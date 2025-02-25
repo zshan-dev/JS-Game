@@ -1,7 +1,7 @@
 /*
 Name: Zeshan Bombaywala 
 Student Number: 
-Description:
+Description: All the styling for the form, help menu and the game.
 */
 
 *{
@@ -226,12 +226,11 @@ input[type=color] {
 
 
 @media (max-width: 430px) {
-    
     input {
         width: 60%; 
         padding: 8px; 
     }
-
+    
     #board {
         width: 90%; 
     }

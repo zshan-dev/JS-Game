@@ -1,7 +1,7 @@
 /* 
 Name: Zeshan Bombaywala 
 Student Number: 
-Description: 
+Description: The javascript behind the functionality of the form, help menu and game.
 */
 
 
@@ -18,15 +18,15 @@ window.addEventListener("load", function(event){
     let score = document.getElementById("score");
     let comp = document.getElementById("computerChoice");
     let WLC = document.getElementById('result');
-    let compIMG = document.getElementById("CC");
+    let compIMG = document.getElementById("CC"); //computer choices img
     let chall = document.getElementById("challange");
     let rock = document.getElementById("rock");
     let paper = document.getElementById("paper");
     let scissors = document.getElementById("scissors");
     let end_screen = document.getElementById("end");
     let end_msg = document.getElementById("end_msg");
-    let exit = document.getElementById("exit");
-    let restart = document.getElementById("restart");
+    let exit_btn = document.getElementById("exit");
+    let restart_btn = document.getElementById("restart");
 
 
     let open = false; // HELP drop down menu
@@ -49,15 +49,20 @@ window.addEventListener("load", function(event){
     checkform();
 
     /**
-     * Menu Form
-     * @param {Form} Event
-     * @returns User Info
+     * Validates the Menu Form inputs and enables/disables the submit button.
+     * @function checkform
+     * @returns {void}
      */
 
     function checkform(){
         let nameValid = false;
         let ageValid = false;
 
+        /**
+         * Updates the submit button's state based on form validation.
+         * Disables the button if any field is invalid.
+         * Shows a warning message if inputs are incorrect.
+         */
         function checkBTN() {
             submit.disabled = !(nameValid && ageValid);
             
@@ -111,7 +116,7 @@ window.addEventListener("load", function(event){
     });
 
     /**
-     * Processes a round of the game with the given player choice.
+     * Runs a round of the game with the given player choice.
      * @param {string} playerChoice - The player's choice ("rock", "paper", or "scissors").
      * @returns
      */
@@ -123,8 +128,7 @@ window.addEventListener("load", function(event){
     }
     
     /**
-     * Game
-     * @param {getComputerChoice} 
+     * Randomly selects a choice for the computer
      * @returns Randomly chooses between rock, paper or scissors. 
      */
 
@@ -145,7 +149,7 @@ window.addEventListener("load", function(event){
      * Determines the winner of the game round, updates points, and checks if the game should end.
      * @param {string} player - The player's choice.
      * @param {string} computer - The computer's choice.
-     * @returns {string} Message indicating the result of the round.
+     * @returns {string} Message showing the result of the round.
      */
 
     let points = 0;
@@ -173,7 +177,7 @@ window.addEventListener("load", function(event){
     }
 
     /**
-     * Checks if the player has reached the required points to end the game and displays the end game screen.
+     * Checks if the player has reached 50 points to end the game and displays the end screen.
      */
     function end_game(){
         if(points >= 50){
@@ -197,11 +201,11 @@ window.addEventListener("load", function(event){
         end_game();
     }
 
-    exit.addEventListener("click", function(event) {
+    exit_btn.addEventListener("click", function(event) {
         document.location.reload();
     });
 
-    restart.addEventListener("click", function(event) {
+    restart_btn.addEventListener("click", function(event) {
         points = 0;
         attempts = 0;
         score.innerText = '0';
@@ -213,6 +217,7 @@ window.addEventListener("load", function(event){
         score.style.display = "flex";
     });
 
+    // Toggle Help Menu
     help.addEventListener("click", function(event) {
         if (open) {
           rules.style.display = "none";
